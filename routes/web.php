@@ -11,18 +11,35 @@
 |
 */
 
-use Illuminate\Support\Facades\Gate;
-
+Route::get('/user_admin', function(){
+    \Illuminate\Support\Facades\Auth::loginUsingId(1);
+});
+Route::get('/user', function(){
+    \Illuminate\Support\Facades\Auth::loginUsingId(2);
+});
 Route::get('/', function () {
-//    \Illuminate\Support\Facades\Auth::loginUsingId(2);
-    if(Gate::allows('access-admin')){
-        return "Usuário com permissão admin";
-    }else{
-        return "Usuário sem permissão admin";
-    }
-//    return view('welcome');
+    return view('welcome');
 });
 
-Auth::routes();
+Route::get('/home', function(){
+    return redirect()->route('admin.home');
+});
 
-Route::get('/home', 'HomeController@index');
+Route::group([
+    'prefix' => 'admin',
+    'as'=>'admin.'
+],  function(){
+
+    Auth::routes();
+
+    Route::group(['middleware' => 'can:access-admin'], function(){
+        Route::get('/home', 'HomeController@index')->name('home');
+
+        Route::group(['prefix'=>'usuarios', 'as'=>'usuarios'], function(){
+            Route::get('create', function(){
+                return "Criar usuário";
+            });
+        });
+    });
+});
+
