@@ -25,20 +25,18 @@ Route::get('/home', function(){
     return redirect()->route('admin.home');
 });
 
+
 Route::group([
     'prefix' => 'admin',
     'as'=>'admin.'
 ],  function(){
 
     Auth::routes();
-
     Route::group(['middleware' => 'can:access-admin'], function(){
         Route::get('/home', 'HomeController@index')->name('home');
 
-        Route::group(['prefix'=>'usuarios', 'as'=>'usuarios'], function(){
-            Route::get('create', function(){
-                return "Criar usuário";
-            });
+        Route::group(['prefix'=>'user', 'as'=>'user.'], function(){
+            Route::get('create', 'UserController@index')->name('create');
         });
     });
 });

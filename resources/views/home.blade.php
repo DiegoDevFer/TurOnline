@@ -8,7 +8,7 @@
                 <div class="panel-heading">home</div>
 
                 <div class="panel-body">
-                    <a href="{{route('admin')}}">Usuários</a>
+                    <a href="{{route('admin.user.create')}}">Usuários</a>
                 </div>
             </div>
         </div>
