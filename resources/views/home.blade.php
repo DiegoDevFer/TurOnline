@@ -8,7 +8,10 @@
                 <div class="panel-heading">home</div>
 
                 <div class="panel-body">
-                    <a href="{{route('admin.user.create')}}">Usuários</a>
+                    <a href="{{route('admin.user.index')}}">Usuários</a>
+                </div>
+                <div class="panel-body">
+                    <a href="{{route('admin.ponto-turistico.index')}}">Pontos turísticos</a>
                 </div>
             </div>
         </div>

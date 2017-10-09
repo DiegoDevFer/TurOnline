@@ -25,6 +25,6 @@ $factory->define(TurOnline\User::class, function (Faker\Generator $faker) {
 
 $factory->state(\TurOnline\User::class, 'admin', function(Faker\Generator $faker) {
     return [
-        'role' => \TurOnline\User::ROLE_ADMIN
+        'role' => \TurOnline\User::ROLE_S_ADMIN,
     ];
 });

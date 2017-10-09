@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'TurOnline') }}</title>
 
     <!-- Styles -->
     {{--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">--}}
@@ -36,9 +36,12 @@
                 </button>
 
                 <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" href="{{route('admin.home')}}">
+                    {{ config('app.name', 'TurOnline') }}
                 </a>
+                {{--@if (Request::path() != 'admin')--}}
+                    {{--<li class="grey lighten-3"><a href="{{route('admin.home')}}">Home</a></li>--}}
+                {{--@endif--}}
             </div>
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">

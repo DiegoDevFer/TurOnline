@@ -35,8 +35,16 @@ Route::group([
     Route::group(['middleware' => 'can:access-admin'], function(){
         Route::get('/home', 'HomeController@index')->name('home');
 
-        Route::group(['prefix'=>'user', 'as'=>'user.'], function(){
-            Route::get('create', 'UserController@index')->name('create');
+        Route::group(['prefix'=>'home/user', 'as'=>'user.'], function(){
+            Route::get('index', 'UserController@index')->name('index');
+            Route::get('create', 'UserController@create')->name('create');
+            Route::post('store', 'UserController@store')->name('store');
+        });
+
+        Route::group(['prefix'=>'ponto-turistico', 'as'=>'ponto-turistico.'], function(){
+            Route::get('index', 'PontoTuristicoController@index')->name('index');
+            Route::get('create', 'PontoTuristicoController@create')->name('create');
+            Route::post('store', 'PontoTuristicoController@store')->name('store');
         });
     });
 });
