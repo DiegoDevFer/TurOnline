@@ -6,7 +6,7 @@
             {!! Form::open(['route'=>'admin.ponto-turistico.store', 'method'=>'POST']) !!}
 
             @include('admin.pt_turistico.pt_form')
-            <br>
+
             {!! Form::submit('Cadastrar', ['class'=>'btn btn-primary']) !!}
 
             {!! Form::close() !!}

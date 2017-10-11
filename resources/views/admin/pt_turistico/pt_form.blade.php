@@ -3,3 +3,5 @@
 
 {!! Form::label('description','Descrição') !!}
 {!! Form::textarea('description', null, ['placeholder'=>'Descreva aqui o ponto turistico', 'class'=>'form-control']) !!}
+
+<br>

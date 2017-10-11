@@ -39,12 +39,19 @@ Route::group([
             Route::get('index', 'UserController@index')->name('index');
             Route::get('create', 'UserController@create')->name('create');
             Route::post('store', 'UserController@store')->name('store');
+            Route::get('edit/{id}', 'UserController@edit')->name('edit');
+            Route::post('update/{id}', 'UserController@update')->name('update');
+            Route::get('destroy/{id}', 'UserController@destroy')->name('destroy');
         });
 
         Route::group(['prefix'=>'ponto-turistico', 'as'=>'ponto-turistico.'], function(){
             Route::get('index', 'PontoTuristicoController@index')->name('index');
+            Route::get('show/{id}', 'PontoTuristicoController@show')->name('show');
             Route::get('create', 'PontoTuristicoController@create')->name('create');
             Route::post('store', 'PontoTuristicoController@store')->name('store');
+            Route::get('edit/{id}', 'PontoTuristicoController@edit')->name('edit');
+            Route::post('update/{id}', 'PontoTuristicoController@update')->name('update');
+            Route::get('destroy/{id}', 'PontoTuristicoController@destroy')->name('destroy');
         });
     });
 });
