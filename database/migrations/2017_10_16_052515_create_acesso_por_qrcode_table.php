@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePontoTurTable extends Migration
+class CreateAcessoPorQrcodeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreatePontoTurTable extends Migration
      */
     public function up()
     {
-        Schema::create('pontoturs', function(Blueprint $table){
+        Schema::create('registroqrcodes', function (Blueprint $table){
             $table->increments('id');
-            $table->string('name');
-            $table->text('description');
-//          chaves estrangeiras
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->string('navegador')->default('indefinido');
+            $table->ipAddress('ipclient')->nullable();
+//            $table->dateTime('entrada');
+//            $table->dateTime('saida');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -32,6 +30,6 @@ class CreatePontoTurTable extends Migration
      */
     public function down()
     {
-        Schema::drop('pontoturs');
+        Schema::drop('registroqrcodes');
     }
 }

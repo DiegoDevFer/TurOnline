@@ -12,6 +12,7 @@
                 <th>#</th>
                 <th>Nome</th>
                 <th>Ação</th>
+                <th>Ação</th>
                 <th>Excluir</th>
             </tr>
             </thead>
@@ -19,10 +20,13 @@
                 @foreach($cadastros as $dados)
                     <tr>
                         <td scope="row">{{$dados->id}}</td>
-                        <td><a href="{{route('admin.ponto-turistico.show', ['id'=>$dados->id])}}">{{$dados->name}}</a>
+                        <td>
+                            <a href="{{route('admin.ponto-turistico.show', ['id'=>$dados->id])}}">{{$dados->name}}</a>
                         </td>
+                        <td><a href="{{route('admin.ponto-turistico.gerarQr',['id'=>$dados->id])}}">GerarQr</a></td>
                         <td><a href="{{route('admin.ponto-turistico.edit',['id'=>$dados->id])}}">Editar</a></td>
-                        <td><a href="{{route('admin.ponto-turistico.destroy',['id'=>$dados->id])}}">Excluir</a></td>
+                        <td><a href="{{route('admin.ponto-turistico.destroy',['id'=>$dados->id])}}">Excluir</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbory>

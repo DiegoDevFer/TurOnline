@@ -25,6 +25,9 @@ Route::get('/home', function(){
     return redirect()->route('admin.home');
 });
 
+Route::group(['prefix'=>'public'], function(){
+    Route::get('show/{id}','PontoTuristicoController@showPontoTur')->name('show');
+});
 
 Route::group([
     'prefix' => 'admin',
@@ -47,10 +50,11 @@ Route::group([
         Route::group(['prefix'=>'ponto-turistico', 'as'=>'ponto-turistico.'], function(){
             Route::get('index', 'PontoTuristicoController@index')->name('index');
             Route::get('show/{id}', 'PontoTuristicoController@show')->name('show');
+            Route::get('gerarQr/{id}','PontoTuristicoController@gerarQrCode')->name('gerarQr');
             Route::get('create', 'PontoTuristicoController@create')->name('create');
             Route::post('store', 'PontoTuristicoController@store')->name('store');
             Route::get('edit/{id}', 'PontoTuristicoController@edit')->name('edit');
-            Route::post('update/{id}', 'PontoTuristicoController@update')->name('update');
+            Route::put('update/{id}', 'PontoTuristicoController@update')->name('update');
             Route::get('destroy/{id}', 'PontoTuristicoController@destroy')->name('destroy');
         });
     });
