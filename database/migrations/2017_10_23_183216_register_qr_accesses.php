@@ -17,8 +17,8 @@ class RegisterQrAccesses extends Migration
             $table->increments('id');
             $table->string('navegador')->default('indefinido');
             $table->ipAddress('ipclient')->nullable();
-//            $table->dateTime('entrada');
-//            $table->dateTime('saida');
+            $table->double('latitude')->nullable();
+            $table->double('longitude')->nullable();
             $table->timestamps();
         });
     }

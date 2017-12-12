@@ -17,6 +17,17 @@ class UserController extends Controller
     {
         $this->User = $user;
     }
+    //METHODOS DE EXIBIÇÃO DE DADOS DO APLICATVO.
+
+    /*
+     * return VIEW com o mapa
+     */
+    public function map1(){
+        return view('admin.dados.mapa1');
+    }
+
+
+    //FIM DOS METHODOS DE EXIBIÇÃO DE DADOS.
 
     public function index()
     {

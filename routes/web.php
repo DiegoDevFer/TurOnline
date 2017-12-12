@@ -27,6 +27,9 @@ Route::get('/home', function(){
 
 Route::group(['prefix'=>'public'], function(){
     Route::get('show/{id}','PontoTuristicoController@showPontoTur')->name('show');
+    Route::get('xml_cultura','PontoTuristicoController@xml_cultura')->name('xml_cultura');
+    Route::get('xml_musica','PontoTuristicoController@xml_musica')->name('xml_musica');
+    Route::get('mobile/{chavedeacesso}/{idcliente}/{idponto}','PontoTuristicoController@mobile')->name('mobille');
 });
 
 Route::group([
@@ -45,6 +48,9 @@ Route::group([
             Route::get('edit/{id}', 'UserController@edit')->name('edit');
             Route::post('update/{id}', 'UserController@update')->name('update');
             Route::get('destroy/{id}', 'UserController@destroy')->name('destroy');
+
+            //Rotas para exibir os dados coletados
+            Route::get('map1', 'UserController@map1')->name('map1');
         });
 
         Route::group(['prefix'=>'ponto-turistico', 'as'=>'ponto-turistico.'], function(){
@@ -56,6 +62,12 @@ Route::group([
             Route::get('edit/{id}', 'PontoTuristicoController@edit')->name('edit');
             Route::put('update/{id}', 'PontoTuristicoController@update')->name('update');
             Route::get('destroy/{id}', 'PontoTuristicoController@destroy')->name('destroy');
+            ##############################################################################
+            Route::get('gallery/{id}', 'PontoTuristicoController@createGallery')->name('create_gallery');
+            Route::post('store_gallery', 'PontoTuristicoController@store_gallery')->name('store_gallery');
+
+            Route::get('xml', 'PontoTuristicoController@gerarXml')->name('gerarXml');
+
         });
     });
 });

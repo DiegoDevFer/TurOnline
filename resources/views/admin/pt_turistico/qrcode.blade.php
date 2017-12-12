@@ -5,7 +5,7 @@
 
         <div>
             <div class="">
-                {!! QrCode::size(900)->generate(route('show',['id'=>$pontoTur->id])); !!}
+                {!! QrCode::size(700)->generate(route('show',['id'=>$pontoTur->id])); !!}
                 <p></p>
             </div>
         </div>

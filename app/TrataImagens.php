@@ -2,7 +2,10 @@
 
 namespace TurOnline;
 
+use File;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Database\Eloquent\Model;
+use Intervention\Image\Facades\Image;
 
 class TrataImagens extends Model
 {
@@ -12,8 +15,10 @@ class TrataImagens extends Model
      * param $file = imagem que vem do formulário
      * param $dir NULLO pode ou não passar o caminho da imagem.
      */
-    public function createImagem($file, $dir = null)
+    public function createImagem($file, $dir = null, $sizefile = null)
     {
+
+//        dd($file, $dir, $sizefile);
         if (Input::file()):
             //inicio criação do nome da imagem
             $data = \Carbon\Carbon::now();
@@ -24,7 +29,7 @@ class TrataImagens extends Model
 
             //criando diretório
             if ($dir):
-                $diretorio = $dir;
+                $diretorio = $dir."/". $data->year . "/" . $data->month;
             else:
                 $diretorio = 'img/' . $data->year . "/" . $data->month . "/" . $data->day;
             endif;
@@ -38,14 +43,21 @@ class TrataImagens extends Model
             $imgName = $dtHora . '.' . $file->getClientOriginalExtension();
 
             $caminho = $diretorio . '/' . $imgName;
+
+
             //salva a imagem redimensionada no caminho indicado.
             $redImagem = Image::make($file->getRealpath());
-            $redImagem->resize(null, 1000, function ($constraint) {
+
+            //se não for passado o tamanho por parâmetro então este será padraõ.
+            $sizefile = (isset($sizefile)?$sizefile : 900);
+
+            $redImagem->resize(null, $sizefile, function ($constraint) {
                 $constraint->aspectRatio();
             });
             $redImagem->save($caminho);
             //$img->destroy();
         endif;
+
         return $caminho;
     }
 }

@@ -13,6 +13,9 @@
                 <div class="panel-body">
                     <a href="{{route('admin.ponto-turistico.index')}}">Pontos turísticos</a>
                 </div>
+                <div class="panel-body">
+                    <a href="{{route('admin.user.map1')}}">Mapa de turistas</a>
+                </div>
             </div>
         </div>
     </div>

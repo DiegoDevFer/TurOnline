@@ -15,7 +15,8 @@ class CreateImgPontosTable extends Migration
     {
         Schema::create('imgpontos', function(Blueprint $table){
             $table->increments('id');
-            $table->string('img-caminho')->nullable();
+            $table->string('path_file_p')->nullable();
+
             $table->integer('pontotur_id');
             $table->foreign('pontotur_id')->references('id')->on('pontoturs');
             $table->timestamps();

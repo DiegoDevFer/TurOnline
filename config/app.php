@@ -179,6 +179,7 @@ return [
         // TurOnline\Providers\BroadcastServiceProvider::class,
         TurOnline\Providers\EventServiceProvider::class,
         TurOnline\Providers\RouteServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -231,6 +232,8 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'QrCode' => SimpleSoftwareIO\QrCode\Facades\QrCode::class,
+        'Image'  => Intervention\Image\Facades\Image::class,
+
 
     ],
 
